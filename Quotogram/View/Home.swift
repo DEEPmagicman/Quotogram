@@ -28,21 +28,10 @@ struct Home: View {
         
         VStack {
             HStack(alignment: .bottom) {
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
                     Text("QUOTE-OGRAM")
                         .font(.largeTitle.bold())
-                    Label {
-                        Text("New York, USA")
-                    } icon: {
-                        Image(systemName: "location.circle")
-                    }
                 }
-                
-                Spacer()
-                
-                Text("Updated 1:30 OM")
-                    .font(.caption2)
-                    .fontWeight(.light)
             }
             GeometryReader { proxy in
                 let size = proxy.size
@@ -77,7 +66,7 @@ struct Home: View {
     }
     
     @ViewBuilder
-    func DetailPage()-> some View {
+    private func DetailPage() -> some View {
         ZStack {
             if let currentCard = currentCard, showDetailPage {
                 
@@ -215,7 +204,7 @@ struct InfiniteStackedCards: View {
         )
     }
     
-    func removeAndPutBack() {
+    private func removeAndPutBack() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             var updatedCard = card
             updatedCard.id = UUID().uuidString
@@ -228,13 +217,13 @@ struct InfiniteStackedCards: View {
         }
     }
     
-    func getRotation(angle: Double)-> Double {
+    private func getRotation(angle: Double)-> Double {
         let width = UIScreen.main.bounds.width - 50
         let progress = offset / width
         return Double(progress) * angle
     }
     
-    func getPadding() -> CGFloat {
+    private func getPadding() -> CGFloat {
         
         let maxPadding = trailingCardsToShown * trailingSpaceOfEachCards
         
@@ -243,7 +232,7 @@ struct InfiniteStackedCards: View {
         return (getIndex() <= trailingCardsToShown ? cardPadding : maxPadding)
     }
     
-    func getIndex() -> CGFloat {
+    private func getIndex() -> CGFloat {
         
         let index = cards.firstIndex { card in
             return self.card.id == card.id
@@ -253,4 +242,4 @@ struct InfiniteStackedCards: View {
     }
 }
 
-let a = "hello there"
+let a = "hello there Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. vThinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. v v Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet."
