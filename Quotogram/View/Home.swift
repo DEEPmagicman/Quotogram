@@ -13,9 +13,11 @@ struct Home: View {
         Card(cardColor: .blue, date: "Hirunaka no Ryuusei", title: "Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet."),
         Card(cardColor: .red, date: "Monday 8th November", title: "hello there is new"),
         Card(cardColor: .yellow, date: "Amelie Earhart", title: "The most beautiful thing is the decision to act."),
-        Card(cardColor: .brown, date: "Leonardo", title: "Let us not take this planet for granted, I do not take tonight for granted"),
-        Card(cardColor: .gray, date: "Johnny Deep", title: "Awards are not important to me when I see a 10 year old boy saying I love Captain Jack Sparow")
+        Card(cardColor: .cyan, date: "Leonardo", title: "Let us not take this planet for granted, I do not take tonight for granted"),
+        Card(cardColor: .green, date: "Johnny Deep", title: "Awards are not important to me when I see a 10 year old boy saying I love Captain Jack Sparrow")
     ]
+    
+    @State var backgroundColor: Color = .clear
     
     @State var showDetailPage: Bool = false
     @State var currentCard: Card?
@@ -41,8 +43,7 @@ struct Home: View {
                 
                 ZStack {
                     ForEach(cards) { card in
-                        InfiniteStackedCards(cards: $cards,card: card, trailingCardsToShown: trailingCardsToShown, trailingSpaceOfEachCards: trailingSpaceOfEachCards, animation: animation, showDetailPage: $showDetailPage)
-                        
+                        InfiniteStackedCards(cards: $cards, backgroundColor: $backgroundColor, card: card, trailingCardsToShown: trailingCardsToShown, trailingSpaceOfEachCards: trailingSpaceOfEachCards, animation: animation, showDetailPage: $showDetailPage)
                             .onTapGesture {
                                 withAnimation(.spring()){
                                     currentCard = card
@@ -62,7 +63,12 @@ struct Home: View {
         .overlay(
             DetailPage()
         )
-        
+        .background(
+            LinearGradient(gradient: Gradient(colors: [self.backgroundColor.opacity(0.75), .black]), startPoint: .top, endPoint: .bottom)
+        )
+        .onAppear{
+            self.backgroundColor = self.cards.first?.cardColor ?? .clear
+        }
     }
     
     @ViewBuilder
@@ -127,6 +133,7 @@ struct Home_Previews: PreviewProvider {
 
 struct InfiniteStackedCards: View {
     @Binding var cards: [Card]
+    @Binding var backgroundColor: Color
     var card: Card
     var trailingCardsToShown: CGFloat
     var trailingSpaceOfEachCards: CGFloat
@@ -213,6 +220,7 @@ struct InfiniteStackedCards: View {
             
             withAnimation {
                 cards.removeFirst()
+                backgroundColor = cards.first?.cardColor ?? .clear
             }
         }
     }
