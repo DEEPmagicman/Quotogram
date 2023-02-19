@@ -10,7 +10,7 @@ import SwiftUI
 struct Home: View {
     
     @State var cards: [Card] = [
-        Card(cardColor: .blue, date: "Hirunaka no Ryuusei", title: "Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet."),
+        Card(cardColor: .blue, date: "Hirunaka no Ryuusei", title: "Thinking about whether it\'s because of jealousy or just saying it out loud by accident, aren\'t they all part of love? Love isn\'t always sweet. "),
         Card(cardColor: .red, date: "Monday 8th November", title: "hello there is new"),
         Card(cardColor: .yellow, date: "Amelie Earhart", title: "The most beautiful thing is the decision to act."),
         Card(cardColor: .cyan, date: "Leonardo", title: "Let us not take this planet for granted, I do not take tonight for granted"),
